@@ -36,6 +36,9 @@ class Queue:
             self.head += 1
         return x
 
+    def is_empty(self):
+        return self.head == self.tail
+
 
 if __name__ == "__main__":
     queue = Queue([15, 6, 9, 8, 4])
