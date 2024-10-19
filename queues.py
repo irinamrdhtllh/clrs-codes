@@ -37,12 +37,13 @@ class Queue:
         return x
 
 
-queue = Queue([15, 6, 9, 8, 4])
+if __name__ == "__main__":
+    queue = Queue([15, 6, 9, 8, 4])
 
-queue.enqueue(17)
-queue.enqueue(3)
-queue.enqueue(5)
-print(queue)
+    queue.enqueue(17)
+    queue.enqueue(3)
+    queue.enqueue(5)
+    print(queue)
 
-queue.dequeue()
-print(queue)
+    queue.dequeue()
+    print(queue)

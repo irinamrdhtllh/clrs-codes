@@ -30,11 +30,12 @@ class Stack:
         return self.array[self.top + 1]
 
 
-stack = Stack(array=[15, 6, 2, 9])
+if __name__ == "__main__":
+    stack = Stack(array=[15, 6, 2, 9])
 
-stack.push(17)
-stack.push(3)
-print(stack)
+    stack.push(17)
+    stack.push(3)
+    print(stack)
 
-stack.pop()
-print(stack)
+    stack.pop()
+    print(stack)
