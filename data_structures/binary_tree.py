@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from queues import Queue
+from data_structures.queues import Queue
 
 
 @dataclass

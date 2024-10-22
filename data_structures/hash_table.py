@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import Optional
 
-from linked_list import Node, SinglyLinkedList
+from data_structures.linked_list import Node, SinglyLinkedList
 
 
 @dataclass
