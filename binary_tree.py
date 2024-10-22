@@ -11,69 +11,71 @@ class Node:
     right: Optional["Node"] = None
 
 
-def pre_order(node: Optional[Node]):
-    if node is None:
-        return
-    print(node.key, end=" ")
-    pre_order(node.left)
-    pre_order(node.right)
+class BinaryTree:
+    def __init__(self, values):
+        i = 0
+        self.root = Node(values[i])
+        i += 1
+        queue = Queue([self.root])
+        while not queue.is_empty():
+            node = queue.dequeue()
+            if i < len(values) and values[i] is not None:
+                node.left = Node(values[i])
+                queue.enqueue(node.left)
+            i += 1
+            if i < len(values) and values[i] is not None:
+                node.right = Node(values[i])
+                queue.enqueue(node.right)
+            i += 1
 
+    def pre_order(self):
+        self._pre_order(self.root)
 
-def post_order(node: Optional[Node]):
-    if node is None:
-        return
-    post_order(node.left)
-    post_order(node.right)
-    print(node.key, end=" ")
-
-
-def in_order(node: Optional[Node]):
-    if node is None:
-        return
-    in_order(node.left)
-    print(node.key, end=" ")
-    in_order(node.right)
-
-
-def bfs(root: Node):
-    queue = Queue([root])
-    while not queue.is_empty():
-        node = queue.dequeue()
+    def _pre_order(self, node: Optional[Node]):
+        if node is None:
+            return
         print(node.key, end=" ")
-        if node.left is not None:
-            queue.enqueue(node.left)
-        if node.right is not None:
-            queue.enqueue(node.right)
+        self._pre_order(node.left)
+        self._pre_order(node.right)
+
+    def post_order(self):
+        self._post_order(self.root)
+
+    def _post_order(self, node: Optional[Node]):
+        if node is None:
+            return
+        self._post_order(node.left)
+        self._post_order(node.right)
+        print(node.key, end=" ")
+
+    def in_order(self):
+        self._in_order(self.root)
+
+    def _in_order(self, node: Optional[Node]):
+        if node is None:
+            return
+        self._in_order(node.left)
+        print(node.key, end=" ")
+        self._in_order(node.right)
+
+    def bfs(self):
+        queue = Queue([self.root])
+        while not queue.is_empty():
+            node = queue.dequeue()
+            print(node.key, end=" ")
+            if node.left is not None:
+                queue.enqueue(node.left)
+            if node.right is not None:
+                queue.enqueue(node.right)
 
 
 if __name__ == "__main__":
-    node_1 = Node(1)
-    node_2 = Node(2)
-    node_3 = Node(3)
-    node_4 = Node(4)
-    node_5 = Node(5)
-    node_6 = Node(6)
-    node_7 = Node(7)
-    node_8 = Node(8)
-    node_9 = Node(9)
+    tree = BinaryTree([1, 7, 9, 2, 6, None, 9, None, None, 5, 11, 5])
 
-    node_1.left = node_2
-    node_1.right = node_3
-
-    node_2.left = node_4
-    node_2.right = node_5
-
-    node_3.right = node_6
-
-    node_5.left = node_7
-    node_5.right = node_8
-
-    node_6.left = node_9
-
-    pre_order(node_1)
+    tree.pre_order()
     print()
-    post_order(node_1)
+    tree.post_order()
     print()
-    in_order(node_1)
+    tree.in_order()
     print()
-    bfs(node_1)
+    tree.bfs()
