@@ -28,11 +28,10 @@ def bellman_ford(G, w, s):
                     "No path found since there are negative-weight cycles in the graph."
                 )
 
+    last_v = []
     for v in G.keys():
-        if v not in pi.values():
-            last_v = v
-            break
-    assert last_v is not None
+        if v not in pi.values() and pi[v] is not None:
+            last_v.append(v)
 
     return pi, last_v
 
@@ -63,4 +62,5 @@ w = {
 }
 pi, last_v = bellman_ford(G, w, "s")
 
-print_path(G, pi, "s", last_v)
+for v in last_v:
+    print_path(G, pi, "s", v)
