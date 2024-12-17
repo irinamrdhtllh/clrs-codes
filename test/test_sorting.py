@@ -1,4 +1,4 @@
-from algorithms.insertion_sort import insertion_sort
+from algorithms.sorting.insertion_sort import insertion_sort
 
 
 def test_general_list():
