@@ -1,4 +1,7 @@
-from algorithms.dynamic_programming import memoized_cut_rod, bottom_up_cut_rod
+from algorithms.dynamic_programming.cut_rod import (
+    memoized_cut_rod,
+    bottom_up_cut_rod,
+)
 
 
 p = [0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30]
